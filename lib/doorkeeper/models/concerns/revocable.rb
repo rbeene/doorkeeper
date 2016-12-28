@@ -22,7 +22,9 @@ module Doorkeeper
       # and clears `:previous_refresh_token` attribute.
       #
       def revoke_previous_refresh_token!
+        puts "in revoke"
         return unless refresh_token_revoked_on_use?
+        puts "refresh token revoked on use is true"
         old_refresh_token.revoke if old_refresh_token
         update_attribute :previous_refresh_token, ""
       end
